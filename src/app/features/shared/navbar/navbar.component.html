@@ -1,0 +1,39 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-menu #userMenu>
+    </mat-menu>
+    <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'over'">
+        <mat-nav-list>
+            <a mat-list-item [routerLink]="['/dashboard']" (click)="drawer.toggle();">Dashbaord</a>
+        </mat-nav-list>
+    </mat-sidenav >
+    <mat-sidenav-content style="padding-top:62px;height:100vh;max-height: 100vh;">
+        <mat-toolbar id='primarybar' color="primary">
+            <button 
+            type="button"
+            aria-label="Toggle sidenav"
+            mat-icon-button
+            (click)="drawer.toggle()">
+                <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+            </button>
+            <span>{{ title }}</span>
+            <span *ngIf="!isHandSet" class="fill-remaining-space"></span>
+            <span class="fill-remaining-space"></span>
+            <div *ngIf="!isHandSet" id="navList" style="padding-top: 8px;">
+                <a [routerLink]="['/']" title="Home">
+                    <mat-icon style="color:grey;font-size: 32px;">home</mat-icon>
+                </a>
+            </div>
+        </mat-toolbar>
+        <div class="content-loader">
+            <mat-progress-bar [ngClass]="{hidden:!busy}" style="height: 10px !important;" mode="indeterminate"
+                color="primary"></mat-progress-bar>
+        </div>
+        <!-- Add Content Here -->
+        <div id="mainContent" class="content container-fluid"
+            style="padding-top: 20px;height:100%;max-height:100%;overflow: auto;">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
