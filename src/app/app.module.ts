@@ -7,6 +7,7 @@ import { NavbarComponent } from './features/shared/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './features/shared/shared.module';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
+import { MatTableModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DashboardComponent } from './features/dashboard/dashboard.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
